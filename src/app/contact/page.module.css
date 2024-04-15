@@ -1,0 +1,48 @@
+.container{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.imgArea{
+    position: relative;
+    flex: 1;
+    height: 500px;
+    width: 100px;
+}
+
+.formContainer{
+    flex: 1;
+    
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.img{
+    object-fit: contain;
+  
+}
+
+.form input,
+.form textarea{
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: var(--bgsoft);
+    color: var(--text)
+}
+
+.button{
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--btn);
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: bold;
+}
