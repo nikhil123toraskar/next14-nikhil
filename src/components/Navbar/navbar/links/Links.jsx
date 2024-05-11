@@ -7,8 +7,6 @@ import { handleLogout } from '@/lib/actions'
 
 const Links = async ({session}) => {
 
-    console.log(session);
-
     const [open, setOpen] = useState(false);
 
     const links = [

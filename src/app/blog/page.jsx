@@ -3,7 +3,9 @@ import styles from "./blog.module.css"
 //import { getPosts } from "@/lib/data"
 
 const getData = async () => {
-    const res = await fetch("http://localhost:3000/api/blog", {next:{revalidate:3600}});
+    console.log('-----------------------------------------------------------'); 
+    console.log(process.env.BASE_URL);
+    const res = await fetch(`${process.env.BASE_URL}/api/blog`, {next:{revalidate:3600}});
 
     if (!res.ok) {
         throw new Error("Something went wrong");

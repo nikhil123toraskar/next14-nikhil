@@ -63,9 +63,6 @@ export const deletePost = async (formData) => {
 
 
     const { id } = Object.fromEntries(formData);
-    console.log(id);
-
-
 
     try {
         connectToDb();
