@@ -6,7 +6,7 @@ const ServerActionTestPage = () => {
 
     const actionincomponent = async ()=> {
         "use server";
-        console.log("it works  inside the component")
+
     }
 
     return (

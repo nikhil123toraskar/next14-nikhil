@@ -1,22 +1,22 @@
-"use client"
 
+"use client"
 import { useState } from 'react'
 import styles from './links.module.css'
 import NavLinks from "./navLinks/navLinks"
+import { handleLogout } from '@/lib/actions'
 
-const Links = () => {
+const Links = async ({session}) => {
 
-    const session = true
-    const IsAdmin = true
+    console.log(session);
 
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState(false);
 
     const links = [
         {
             title: "Home",
             path: "/",
         },
-        
+
         {
             title: "About",
             path: "/about",
@@ -41,21 +41,23 @@ const Links = () => {
                     <NavLinks item={link} key={link.title}></NavLinks>
                 ))}
                 {
-                    session ? (
+                    session?.user ? (
                         <>
-                            {IsAdmin && <NavLinks item={{ title: "Admin", path: "/admin" }}></NavLinks>}
-                            <button className={styles.logout}>Logout</button>
+                            {session.user?.isAdmin && <NavLinks item={{ title: "Admin", path: "/admin" }}></NavLinks>}
+                            <form action={handleLogout}>
+                                <button className={styles.logout}>Logout</button>
+                            </form>
                         </>
                     ) : (
                         <NavLinks item={{ title: "Login", path: "/login" }}></NavLinks>
                     )
                 }
             </div>
-            <button className = {styles.menuButton} onClick={()=>setOpen((prev) => !(prev))}>Menu</button>
+            <button className={styles.menuButton} onClick={() => setOpen((prev) => !(prev))}>Menu</button>
             {
                 open && <div className={styles.mobileLinks}>
                     {
-                        links.map((link)=> (
+                        links.map((link) => (
                             <NavLinks item={link} key={link.title}></NavLinks>
                         ))
                     }

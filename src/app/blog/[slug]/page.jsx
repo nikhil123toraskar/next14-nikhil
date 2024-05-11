@@ -8,7 +8,7 @@ import { getPost } from "@/lib/data";
 
 
 const getData = async (slug) => {
-    console.log(slug);
+
     const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
     debugger;
     if (!res.ok) {
@@ -35,9 +35,9 @@ const SinglePostPage = async ({params}) => {
     debugger;*/
   
     const {slug} = params;
-    console.log(slug); 
+
     const post = await getData(slug);
-    console.log(post);
+
     return (
         <div className={styles.container}>
             <div className={styles.imgContainer}>

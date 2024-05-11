@@ -9,14 +9,12 @@ const navigationtest = () => {
 
     const query = useSearchParams()
 
-    console.log(pathName)
+
 
     const handleClick =()=>{
-        console.log('the button is clicked');
         router.forward();
     }
 
-    console.log('this is navigation test');
     return (
         <button onClick={handleClick}>navigationtest</button>
     )

@@ -8,9 +8,9 @@ export const GET = async (request, {params}) => {
 
     try {
         connectToDb();
-        console.log("connected to db");
+
         const post = await Post.findOne({slug});
-        console.log(post);
+
         return NextResponse.json(post);
     } catch (error) {
         console.log(error);

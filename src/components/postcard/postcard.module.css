@@ -12,8 +12,8 @@
 .bottom {}
 
 .imgContainer {
-    width: 90%;
-    height: 400px;
+    width: 88%;
+    height: 550px;
     position: relative;
 
 }
@@ -31,7 +31,7 @@
 }
 
 .date {
-    font-size: 12px;
+    font-size: 9px;
     transform: rotate(270deg);
     margin: auto;
 }

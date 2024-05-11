@@ -5,9 +5,9 @@ import { NextResponse } from "next/server";
 export const GET = async () => {
     try {
         connectToDb();
-        console.log("connected to db");
+ 
         const posts = await Post.find();
-        console.log(posts);
+
         return NextResponse.json(posts);
     } catch (error) {
         console.log(error);
