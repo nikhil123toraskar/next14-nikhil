@@ -1,17 +1,14 @@
 import Postcard from "@/components/postcard/postcard"
 import styles from "./blog.module.css"
+import { getPosts } from "@/lib/data";
 //import { getPosts } from "@/lib/data"
 
 const getData = async () => {
-    console.log('-----------------------------------------------------------'); 
-    console.log(process.env.BASE_URL);
-    const res = await fetch(`${process.env.BASE_URL}/api/blog`, {next:{revalidate:3600}});
+    const res = await getPosts();
 
-    if (!res.ok) {
-        throw new Error("Something went wrong");
-    }
+    console.log(res);
 
-    return res.json();
+    return res;
 }
 
 
