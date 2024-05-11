@@ -19,12 +19,12 @@ Where Ideas Soar and Brands Flourish Unleashing Creativity space
       </div>
 
       <div className={styles.brands}>
-        <Image src="/brands.png" fill className={styles.imgBrand}></Image>
+        <Image src="/brands.png" fill className={styles.imgBrand} alt=""></Image>
       </div>
 
     </div>
     <div className={styles.imgArea}>
-    <Image src="/hero.gif" fill className={styles.imgHero}></Image>
+    <Image src="/hero.gif" fill className={styles.imgHero} alt=""></Image>
     </div>
     
     
