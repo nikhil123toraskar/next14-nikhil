@@ -63,19 +63,19 @@ const Links = ({session}) => {
         onClick={() => setOpen((prev) => !prev)}
       />
       {open && (
-        <div className={styles.mobileLinks} onClick={toggle}>
+        <div className={styles.mobileLinks} >
           {links.map((link) => (
-          <NavLinks item={link} key={link.title} />
+          <div onClick={toggle}><NavLinks item={link} key={link.title} /></div>
         ))}
         {session?.user ? (
           <>
             {session.user?.isAdmin && <NavLinks item={{ title: "Admin", path: "/admin" }} />}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <button type="submit" className={styles.logout}>Logout</button>
             </form>
           </>
         ) : (
-          <NavLinks item={{ title: "Login", path: "/login" }} />
+            <div onClick={toggle}><NavLinks item={{ title: "Login", path: "/login" }} /> </div>
         )}
          </div>
         
