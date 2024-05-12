@@ -24,7 +24,7 @@ Where Ideas Soar and Brands Flourish Unleashing Creativity space
 
     </div>
     <div className={styles.imgArea}>
-    <Image src="/hero.gif" fill className={styles.imgHero} alt=""></Image>
+    <Image src="/hero.gif"fill className={styles.imgHero} alt=""></Image>
     </div>
     
     
