@@ -1,7 +1,16 @@
+"use client"
+
 import Image from "next/image";
 import styles from "./home.module.css"
+import { useRouter } from "next/navigation";
 
 const Home = () => {
+
+  const router = new useRouter();
+  const handleContact = () => {
+    router.push("/contact");
+  }
+
   return <div className={styles.container}>
     
     <div className={styles.textArea}>
@@ -15,7 +24,7 @@ Where Ideas Soar and Brands Flourish Unleashing Creativity space
 
       <div className={styles.buttons}>
         <button className={styles.button}>Learn More</button>
-        <button className={styles.button}>Contact</button>
+        <button onClick={handleContact} className={styles.button}>Contact</button>
       </div>
 
       <div className={styles.brands}>
