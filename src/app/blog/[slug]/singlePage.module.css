@@ -50,3 +50,21 @@
 .content{
     font-style: 20px;
 }
+
+@media (max-width: 768px) {
+    .container{
+        display: flex;
+        gap: 100px;
+        flex-direction: column;
+    }
+
+    .imgContainer{
+        position: relative;
+        flex: auto;
+        order: 1;
+    }
+    .textContainer
+    {
+        order: 2;
+    }
+}
