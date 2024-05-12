@@ -6,8 +6,6 @@ import { getPosts } from "@/lib/data";
 const getData = async () => {
     const res = await getPosts();
 
-    console.log(res);
-
     return res;
 }
 
