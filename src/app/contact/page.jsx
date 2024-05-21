@@ -14,22 +14,30 @@ const ContactPage = () => {
         phone: '',
         message: ''
     });
-    
+
+    const [buttonText, setButtonText] = useState('Send');
+    const [isSending, setIsSending] = useState(false);
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
+
+
 
     const sendEmail = async (e) => {
 
 
         e.preventDefault();
         console.log(e);
-    
+
         if (!formData.name || !formData.email || !formData.message) {
             alert('Please fill in all required fields.');
             return;
         }
+
+        setIsSending(true);
+        setButtonText('Sending.......');
+
         const templateParams = {
             from_email: e.target[1].value, //"nikhilfrom",
             to_name: "nikhil toraskar",
@@ -58,6 +66,8 @@ const ContactPage = () => {
                 phone: '',
                 message: ''
             });
+            setIsSending(false);
+            setButtonText('Send');
         });
     
     }
@@ -94,7 +104,10 @@ const ContactPage = () => {
                         cols="30"
                         rows="10"
                         placeholder="Message"></textarea>
-                    <button type="submit" className={styles.button}>Send</button>
+                    <button 
+                    type="submit" 
+                    disabled={isSending} 
+                    className={styles.button}>{buttonText}</button>
                 </form>
             </div>
 
