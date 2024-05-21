@@ -15,12 +15,23 @@ const ContactPage = () => {
         message: ''
     });
 
-    const [buttonText, setButtonText] = useState('Send');
+    const [buttonText, setButtonText] = useState('Send Us An Email');
     const [isSending, setIsSending] = useState(false);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
+
+    const handlePhoneNumberChange = (e) => {
+        const { name, value } = e.target;
+        if (/^\d*$/.test(value) && value.length <=10) {
+            setFormData({ ...formData, [name]: value });
+        }
+      };
 
 
 
@@ -30,13 +41,32 @@ const ContactPage = () => {
         e.preventDefault();
         console.log(e);
 
-        if (!formData.name || !formData.email || !formData.message) {
-            alert('Please fill in all required fields.');
+        if (!formData.name) {
+            alert('Please fill in the contact name.');
+            return;
+        }
+        if (!formData.email) {
+            alert('Please fill in the email.');
+            return;
+        }
+        if (!formData.message) {
+            alert('Please fill in the message.');
             return;
         }
 
+        if (formData.phone.length < 10 && formData.phone?.length) {
+            alert('Please fill correct phone number.');
+            return;
+        }
+
+        if (!emailRegex.test(formData.email)) {
+            alert('Please enter a valid email address.');
+            return;
+          }
+        
+
         setIsSending(true);
-        setButtonText('Sending.......');
+        setButtonText('Sending...');
 
         const templateParams = {
             from_email: e.target[1].value, //"nikhilfrom",
@@ -84,26 +114,26 @@ const ContactPage = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Name and Surname"/>
+                        placeholder="Name *"/>
 
                     <input type="text"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Email Address"/>
+                        placeholder="Email Address *"/>
 
                     <input  type="text"
                         name="phone"
                         value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="Phone number (Optional)"/>
+                        onChange={handlePhoneNumberChange}
+                        placeholder="10 Digit Phone number (Optional)"/>
 
                     <textarea name="message"
                         value={formData.message}
                         onChange={handleChange}
                         cols="30"
                         rows="10"
-                        placeholder="Message"></textarea>
+                        placeholder="Message *"></textarea>
                     <button 
                     type="submit" 
                     disabled={isSending} 
